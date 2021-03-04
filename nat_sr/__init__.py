@@ -5,17 +5,19 @@ import numpy as np
 import imageio
 import tensorflow.compat.v1 as tf
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+tf.get_logger().setLevel('ERROR')
 tf.disable_eager_execution()
+PATH = os.path.dirname(__file__)
 
 
 class Upsampler:
 
     def __init__(self):
-        saver = tf.train.import_meta_graph('resources/NatSR.meta')
+        path = os.path.join(PATH, '../resources/NatSR')
+        saver = tf.train.import_meta_graph(path + '.meta')
         self.input, self.output = tf.get_collection('InNOut')
         self.sess = tf.Session()
-        saver.restore(self.sess, 'resources/NatSR')
+        saver.restore(self.sess, path)
 
     def __call__(self, ims):
         ims = np.array(ims).astype(np.float32)
