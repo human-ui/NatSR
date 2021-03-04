@@ -13,6 +13,7 @@ PATH = os.path.dirname(__file__)
 class Upsampler:
 
     def __init__(self):
+        tf.reset_default_graph()
         path = os.path.join(PATH, '../resources/NatSR')
         saver = tf.train.import_meta_graph(path + '.meta')
         self.input, self.output = tf.get_collection('InNOut')
