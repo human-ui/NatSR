@@ -1,0 +1,11 @@
+[flake8]
+max-line-length = 120
+format = autopep8
+# https://pep8.readthedocs.io/en/latest/intro.html#error-codes
+# E231: missing whitespace after ‘,’, ‘;’, or ‘:’
+# ignored because it doesn't make sense when slicing and in numpy arrays
+# E401: Put imports on separate lines.
+# ignored because that's not always the best idea
+# W503: line break before binary operator
+# in flake8, one has to choose where to break; recommendation is before
+ignore = E231,E401,W503
