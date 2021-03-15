@@ -1,10 +1,11 @@
 import os
-from pathlib import Path
 
 import numpy as np
 import imageio
-import tensorflow.compat.v1 as tf
 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
+import tensorflow.compat.v1 as tf  # noqa
 tf.get_logger().setLevel('ERROR')
 tf.disable_eager_execution()
 PATH = os.path.dirname(__file__)
